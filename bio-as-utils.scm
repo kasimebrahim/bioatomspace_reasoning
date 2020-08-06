@@ -76,14 +76,14 @@
        (string-starts-with? (cog-name A) "SMP0")))
 
 (define (go? A)
-  (and (eq? (cog-type A) 'ConceptNode)
+  (and (or (eq? (cog-type A) 'BiologicalProcessNode) (eq? (cog-type A) 'MolecularFunctionNode) (eq? (cog-type A) 'CellularComponentNode))
        (string-starts-with? (cog-name A) "GO:")))
 
 (define (gene? A)
   (and (eq? (cog-type A) 'GeneNode)))
 
 (define (GO_term? A)
-  (and (eq? (cog-type A) 'ConceptNode)
+  (and (or (eq? (cog-type A) 'BiologicalProcessNode) (eq? (cog-type A) 'MolecularFunctionNode) (eq? (cog-type A) 'CellularComponentNode))
        (equal? (cog-name A) "GO_term")))
 
 (define (inheritance-GO_term? A)
@@ -96,8 +96,18 @@
 (define (get-genes)
   (cog-get-atoms 'GeneNode))
 
+(define (get-go-categories_cc)
+  (filter go? (cog-get-atoms 'CellularComponentNode)))
+
+(define (get-go-categories_mf)
+  (filter go? (cog-get-atoms 'MolecularFunctionNode)))
+
+(define (get-go-categories_bp)
+  (filter go? (cog-get-atoms 'BiologicalProcessNode)))
+
 (define (get-go-categories)
-  (filter go? (cog-get-atoms 'ConceptNode)))
+  (append (get-go-categories_cc) (get-go-categories_bp) (get-go-categories_mf))
+)
 
 (define (go-subset? S)
   (and (subset? S) (go? (gar S)) (go? (gdr S))))

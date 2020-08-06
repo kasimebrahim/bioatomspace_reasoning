@@ -37,13 +37,15 @@ Download and unpack the datasets. From the root folder of that
 project, type the following
 
 ```bash
+mkdir kbs
 cd kbs
-wget https://mozi.ai/datasets/gene-level-dataset_2020-04-21.tar.gz
-tar xvzf gene-level-dataset_2020-04-21.tar.gz
+wget https://mozi.ai/datasets/with_new_atomtypes/gene-level-dataset_2020-07-23.tar.gz
+tar xvzf gene-level-dataset_2020-07-23.tar.gz
 cd ..
 ```
 
 ### Run experiments
+Note: Only the experment `Preprocess KBs` works for now, for the bioAtomspace v2.
 
 #### Pattern miner xp
 
@@ -84,7 +86,7 @@ guile -l preprocess-kbs.scm
 which should create
 
 ```
-results/preprocess-kbs-<PARAMETERS>.scm
+results/preprocess-kbs-asv2-<PARAMETERS>.scm
 ```
 
 #### Simple intensional reasoning example
