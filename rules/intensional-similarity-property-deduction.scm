@@ -21,7 +21,7 @@
          (H (Variable "$H"))
          (P (Variable "$P"))
          (GeneType (Type 'GeneNode))
-         (ConceptType (Type 'ConceptNode)))
+         (ConceptType (TypeInh 'ConceptNode)))
     (Bind
       (VariableSet
         (TypedVariable G GeneType)

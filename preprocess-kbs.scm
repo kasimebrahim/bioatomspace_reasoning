@@ -167,8 +167,8 @@
 ;; 7. Infer all attraction links, with their TVs
 
 ;; Add required PLN rules
-(pln-add-rule "subset-condition-negation-rule")
-(pln-add-rule "subset-attraction-introduction-rule")
+(pln-add-rule 'subset-condition-negation)
+(pln-add-rule 'subset-attraction-introduction)
 
 ;; Run backward chainer to produce attraction links.
 (define vardecl (VariableSet
