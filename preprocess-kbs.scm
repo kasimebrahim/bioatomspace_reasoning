@@ -101,15 +101,15 @@
 (ure-logger-set-filename! log-filename)
 
 ;; Load KBs to reason on
-(define db-lst (load-kbs (list "kbs/gene-level-dataset_2020-04-21/GO_2020-04-01.scm"
-                               "kbs/gene-level-dataset_2020-04-21/GO_annotation_gene-level_2020-04-01.scm")
+(define db-lst (load-kbs (list "kbs/GO_2020-07-21.scm"
+                               "kbs/GO_annotation_gene-level_2020-07-21.scm")
                          #:subsmp ss
                          #:filter-out (lambda (x)
                                         (or (GO_term? x)
                                             (inheritance-GO_term? x)))))
 
 ;; Helpers
-(define ConceptT (Type "ConceptNode"))
+(define ConceptT (TypeInh "ConceptNode"))
 (define GeneT (Type "GeneNode"))
 (define X (Variable "$X"))
 (define Y (Variable "$Y"))
@@ -141,7 +141,9 @@
 ;; Get old + newly inferred members
 (define all-mbrs
   (append (cog-outgoing-set results-mbrs)
-          (get-member-links 'GeneNode 'ConceptNode)))
+          (get-member-links 'GeneNode 'MolecularFunctionNode)
+          (get-member-links 'GeneNode 'CellularComponentNode)
+          (get-member-links 'GeneNode 'BiologicalProcessNode)))
 
 ;; Add true TVs to all results (3. and 4.)
 (define results-lst-with-tvs
@@ -165,8 +167,8 @@
 ;; 7. Infer all attraction links, with their TVs
 
 ;; Add required PLN rules
-(pln-add-rule-by-name "subset-condition-negation-rule")
-(pln-add-rule-by-name "subset-attraction-introduction-rule")
+(pln-add-rule 'subset-condition-negation)
+(pln-add-rule 'subset-attraction-introduction)
 
 ;; Run backward chainer to produce attraction links.
 (define vardecl (VariableSet
@@ -193,5 +195,5 @@
                             non-null-results-lst-with-tvs
                             non-null-inversed-go-subsets-with-pos-tvs
                             non-null-attractions))
-(define scm-filename (string-append "results/preprocess-kbs" param-str ".scm"))
+(define scm-filename (string-append "results/preprocess-kbs-asv2" param-str ".scm"))
 (write-atoms-to-file scm-filename all-results)

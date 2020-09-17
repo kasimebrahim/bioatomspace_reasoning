@@ -38,7 +38,7 @@
 ;; Load kbs
 (define db-lst (load-kbs (list
                           ;; Obtained from running preprocess-kbs.scm
-                          "results/preprocess-kbs-rs=0-ss=1-mi=12-cp=10-fra=t.scm")
+                          "results/preprocess-kbs-asv2-rs=0-ss=1-mi=12-cp=10-fra=t.scm")
                          #:subsmp ss))
 
 (cog-logger-debug "(length db-lst) = ~a" (length db-lst))
@@ -56,8 +56,8 @@
 (define X (Variable "$X"))
 (define Y (Variable "$Y"))
 ;; (define target (IntensionalInheritance X Y))
-;; (define target (IntensionalSimilarity X Y))
-(define target (IntensionalDifference X Y))
+(define target (IntensionalSimilarity X Y))
+;;(define target (IntensionalDifference X Y))
 (define results-iis (pln-bc target
                             #:maximum-iterations mi
                             #:complexity-penalty cp))
@@ -67,5 +67,5 @@
 
 ;; Write results in file
 (define scm-filename
-  (string-append "results/intentional-reasoning-test" param-str ".scm"))
+  (string-append "results/intentional-reasoning-test-asv2" param-str ".scm"))
 (write-atoms-to-file scm-filename results)
