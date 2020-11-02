@@ -83,9 +83,9 @@
 			(and? x)
 			(present? x)
 			(eval-GO_namespace? x)))
-(define db-lst (load-kbs (list "kbs/gene-level-dataset_2020-04-21/smpdb_gene_2020-04-03.scm"
-                               "kbs/gene-level-dataset_2020-04-21/GO_2020-04-01.scm"
-                               "kbs/gene-level-dataset_2020-04-21/GO_annotation_gene-level_2020-04-01.scm")
+(define db-lst (load-kbs (list "/home/opencog/kbs/smpdb_gene_2020-07-22.scm"
+                               "/home/opencog/kbs/GO_2020-07-21.scm"
+                               "/home/opencog/kbs/GO_annotation_gene-level_2020-07-21.scm")
                          #:subsmp ss
 			 #:filter-in pred-in?
 			 #:filter-out pred-out?))

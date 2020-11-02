@@ -72,7 +72,7 @@
       (equal? str-prefix prefix))))
 
 (define (smp? A)
-  (and (eq? (cog-type A) 'ConceptNode)
+  (and (eq? (cog-type A) 'SmpNode)
        (string-starts-with? (cog-name A) "SMP0")))
 
 (define (go? A)
@@ -91,7 +91,7 @@
        (GO_term? (gdr A))))
 
 (define (get-smps)
-  (filter smp? (cog-get-atoms 'ConceptNode)))
+  (filter smp? (cog-get-atoms 'SmpNode)))
 
 (define (get-genes)
   (cog-get-atoms 'GeneNode))
