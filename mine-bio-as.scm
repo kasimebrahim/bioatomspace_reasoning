@@ -111,7 +111,7 @@
 			              #:db-ratio dbr
                           #:initial-pattern ip
                           #:type-check #t
-                          #:glob-support #f))
+                          #:glob-support #t))
 
 (cog-logger-debug "Final results:\n~a" results)
 
