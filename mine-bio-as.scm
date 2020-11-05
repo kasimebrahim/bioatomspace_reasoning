@@ -30,9 +30,7 @@
                (Variable "$GO"))
              (Present
                (Member (Variable "$Gene") (Variable "$SMP"))
-               (Member (Variable "$Gene") (Variable "$GO"))
-               (Inheritance (Variable "$SMP") (Concept "SMP_term"))
-               (Inheritance (Variable "$GO") (Concept "GO_term")))))
+               (Member (Variable "$Gene") (Variable "$GO")))))
 
 ;; Load modules & utils
 (use-modules (srfi srfi-1))
