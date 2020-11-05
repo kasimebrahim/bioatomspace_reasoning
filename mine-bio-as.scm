@@ -4,6 +4,8 @@
 ;; Implication, Equivalence, Inheritance or Similarity links and use
 ;; these to help reason about biology.
 
+(use-modules (opencog bioscience))
+
 ;; Parameters
 (define jb 1)                           ; Number of jobs for the task
 (define rs 0)                           ; Random seed
