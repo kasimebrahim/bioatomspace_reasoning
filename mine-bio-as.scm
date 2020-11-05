@@ -90,8 +90,9 @@
 			 #:filter-in pred-in?
 			 #:filter-out pred-out?))
 
-;; Post-process by adding extra knowledge
-(define db-lst (append db-lst (add-extra-smp-go-terms)))
+;; Disabling extra knowledge when using type support
+;;;; Post-process by adding extra knowledge
+;;(define db-lst (append db-lst (add-extra-smp-go-terms)))
 
 ;; ;; Debug: log BD
 ;; (cog-logger-debug "db-lst:\n~a" db-lst)
