@@ -106,8 +106,10 @@
                           #:maximum-variables mv
                           #:maximum-spcial-conjuncts 4
                           #:surprisingness su
-			  #:db-ratio dbr
-                          #:initial-pattern ip))
+			              #:db-ratio dbr
+                          #:initial-pattern ip
+                          #:type-check #t
+                          #:glob-support #f))
 
 (cog-logger-debug "Final results:\n~a" results)
 
